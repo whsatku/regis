@@ -27,6 +27,12 @@ section h4:first-child{
 	margin-top: 0;
 }
 
+section:not(.notheme) h4{
+	padding-bottom: 7px;
+	border-bottom: #ccc solid 1px;
+	font-weight: 600;
+}
+
 .padbefore{
 	margin-top: 20px;
 }
