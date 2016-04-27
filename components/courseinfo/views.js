@@ -7,11 +7,19 @@ export default class View extends React.Component{
 		section: null,
 	}
 
+	static contextTypes = {
+		router: React.PropTypes.object.isRequired,
+	};
+
 	componentDidMount(){
 		this.fetchDetail(this.props.params.splat);
 	}
 
 	componentWillReceiveProps(props){
+		if(props.params.splat === this.props.params.splat){
+			return;
+		}
+
 		this.setState({
 			info: null,
 			section: null,
@@ -57,7 +65,10 @@ export default class View extends React.Component{
 
 		return (
 			<div>
-				<Link to={{pathname: '/registration', action: 'pop'}}>&laquo; Back to courses list</Link>
+				<a href="#" onClick={(e) => {
+					e.preventDefault();
+					this.context.router.goBack();
+				}}>&laquo; Back</a>
 				<h3>{this.state.info.name.en}</h3>
 				<h4>{this.state.info.name.th}</h4>
 

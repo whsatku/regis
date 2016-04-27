@@ -14,7 +14,6 @@ if(!window.fetch){
 export default class View extends React.Component{
 	state = {
 		ready: false,
-		input: '',
 	};
 
 	static contextTypes = {
@@ -43,9 +42,12 @@ export default class View extends React.Component{
 	render(){
 		let search = (
 			<input type="text" className="form-control"
-				value={this.state.input}
+				value={this.props.location.query.search || ''}
 				placeholder="Search by course ID"
-				onChange={(e) => this.setState({input: e.target.value})} />
+				onChange={(e) => this.context.router.replace({
+					pathname: this.props.location.pathname,
+					query: {search: e.target.value},
+				})} />
 		);
 
 		if(!this.state.ready){
@@ -69,7 +71,7 @@ export default class View extends React.Component{
 		let limit = 10;
 
 		let courses = courseList.filter((item) => {
-			return item.id.includes(this.state.input);
+			return item.id.includes(this.props.location.query.search || '');
 		}).slice(0, limit).map((item) => {
 			return (
 				<tr key={item.id} className={classNames(
