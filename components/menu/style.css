@@ -1,0 +1,27 @@
+.menubar{
+	background-color: #b5e655;
+	padding: 0 10px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+}
+.menubar ul{
+	margin: 0;
+	padding: 0;
+}
+.menubar li{
+	padding: 0;
+}
+.menubar a{
+	display: block;
+	color: black;
+	padding: 10px 20px;
+}
+.menubar a.active{
+	background-color: #284907;
+	color: white;
+}
+.menubar a:hover, .menubar a:focus{
+	color: black;
+	background-color: #96ca2d;
+	text-decoration: none;
+}

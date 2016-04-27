@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../header';
+import Menu from '../menu';
 import state from '../state';
 import style from './style.css'; // eslint-disable-line no-unused-vars
 
@@ -18,10 +19,15 @@ export default class View extends React.Component{
 				},
 			});
 		}
+		let menu = <Menu />;
+		if(!state.user){
+			menu = null;
+		}
 
 		return (
 			<div>
 				<Header />
+				{menu}
 				{this.props.children}
 			</div>
 		);
