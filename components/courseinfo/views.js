@@ -4,6 +4,7 @@ import DocumentTitle from 'react-document-title';
 import Spinner from 'react-spinkit';
 
 import Credit from '../credit';
+import Section from '../section';
 
 export default class View extends React.Component{
 	state = {
@@ -67,7 +68,7 @@ export default class View extends React.Component{
 
 					<section className="theme1">
 						<h4>Sections</h4>
-						{this.renderEnroll()}
+						<Section course={this.state.info} section={this.state.section} />
 					</section>
 
 					<section className="theme3">
@@ -124,44 +125,5 @@ export default class View extends React.Component{
 				{prereq}
 			</ul>
 		);
-	}
-
-	renderEnroll(){
-		if(this.state.section === null){
-			return <Spinner spinnerName="pulse" />;
-		}else if(this.state.section.length === 0){
-			return 'Course is not offered in this semester.';
-		}else{
-			let sections = this.state.section.map((section) => {
-				return (
-					<tr key={section.id}>
-						<td>{section.id}</td>
-						<td>{section.type}</td>
-						<td>{section.date}</td>
-						<td>{section.location}</td>
-						<td>{section.instructors.join(', ')}</td>
-						<td><strong>{section.enrolled}</strong>/{section.accept}</td>
-					</tr>
-				);
-			});
-
-			return (
-				<table className="table table-striped table-hover coursetable">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Type</th>
-							<th>Dates</th>
-							<th>Location</th>
-							<th>Instructors</th>
-							<th>Enrolled</th>
-						</tr>
-					</thead>
-					<tbody>
-						{sections}
-					</tbody>
-				</table>
-			);
-		}
 	}
 }
