@@ -42,7 +42,7 @@ export default class View extends React.Component{
 				<div className="col-sm-9">
 					<Link to="/" className="branding">Kasetsart University</Link>
 				</div>
-				<div className="col-sm-3 text-right">
+				<div className="col-sm-3 text-right usercol">
 					{user}
 				</div>
 

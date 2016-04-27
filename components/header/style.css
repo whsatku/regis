@@ -20,5 +20,15 @@
 }
 .logout{
 	margin-left: 5px;
-	font-size: 10pt;
+	font-size: 90%;
+}
+
+@media (max-width: 768px){
+	.usercol{
+		text-align: left;
+		color: #555;
+	}
+	.user{
+		font-size: 10pt;
+	}
 }

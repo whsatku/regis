@@ -18,7 +18,7 @@ export default class View extends React.Component{
 		if(this.props.section === null){
 			return <Spinner spinnerName="pulse" />;
 		}else if(this.props.section.length === 0){
-			return 'Course is not offered in this semester.';
+			return <div>Course is not offered in this semester.</div>;
 		}else{
 			let sections = this.props.section.map((section) => {
 				let enrollBtn = <button type="button" className="btn btn-sm btn-primary" onClick={() => this.setState({enroll: section})}>Enroll</button>;
@@ -118,22 +118,24 @@ export default class View extends React.Component{
 
 			return (
 				<div>
-					<table className="table table-striped table-hover coursetable">
-						<thead>
-							<tr>
-								<th></th>
-								<th>ID</th>
-								<th>Type</th>
-								<th>Dates</th>
-								<th>Location</th>
-								<th>Instructors</th>
-								<th>Enrolled</th>
-							</tr>
-						</thead>
-						<tbody>
-							{sections}
-						</tbody>
-					</table>
+					<div className="table-responsive">
+						<table className="table table-striped table-hover coursetable">
+							<thead>
+								<tr>
+									<th></th>
+									<th>ID</th>
+									<th>Type</th>
+									<th>Dates</th>
+									<th>Location</th>
+									<th>Instructors</th>
+									<th>Enrolled</th>
+								</tr>
+							</thead>
+							<tbody>
+								{sections}
+							</tbody>
+						</table>
+					</div>
 					<Modal show={!!this.state.enroll} backdropClassName="modal-backdrop in">
 						<div className="modal" style={{display: 'block'}}>{confirm}</div>
 					</Modal>

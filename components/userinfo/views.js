@@ -21,15 +21,15 @@ export default class View extends React.Component{
 				<section className="theme1">
 					<h4><Link to="/registration">Registration &raquo;</Link></h4>
 					<div className="row infolets">
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-3">
 							<div className="title">Semester</div>
 							<div className="content">2015 Second</div>
 						</div>
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-3 col-xs-6">
 							<div className="title">Date</div>
 							<div className="content">2016-01-10</div>
 						</div>
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-3 col-xs-6">
 							<div className="title">Time</div>
 							<div className="content">11:00 - 12:00</div>
 						</div>
@@ -67,15 +67,15 @@ export default class View extends React.Component{
 					</div>
 					<h4 className="padbefore">Personal information</h4>
 					<div className="row infolets">
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-3">
 							<div className="title">ID</div>
 							<div className="content">xxxxxxxxxxxxx</div>
 						</div>
-						<div className="infolet col-sm-1">
+						<div className="infolet col-sm-2 col-xs-3">
 							<div className="title">Sex</div>
-							<div className="content">Male</div>
+							<div className="content">Female</div>
 						</div>
-						<div className="infolet col-sm-3">
+						<div className="infolet col-sm-7 col-xs-9">
 							<div className="title">Country</div>
 							<div className="content">Thailand</div>
 						</div>
@@ -90,19 +90,19 @@ export default class View extends React.Component{
 			case 0:
 				return (
 					<div className="row infolets" onClick={this.switchPayment}>
-						<div className="infolet col-sm-1">
+						<div className="infolet col-sm-2">
 							<div className="title">Payment</div>
 							<div className="content text-success">Paid</div>
 						</div>
-						<div className="infolet col-sm-3">
+						<div className="infolet col-sm-3 col-xs-6">
 							<div className="title">Bank</div>
 							<div className="content">Krung Thai Bank</div>
 						</div>
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-3 col-xs-6">
 							<div className="title">Payment Date</div>
 							<div className="content">2015-12-21</div>
 						</div>
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-2 col-xs-6">
 							<div className="title">Amount</div>
 							<div className="content">60,700 THB</div>
 						</div>
@@ -111,15 +111,15 @@ export default class View extends React.Component{
 			case 1:
 				return (
 					<div className="row infolets" onClick={this.switchPayment}>
-						<div className="infolet col-sm-1">
+						<div className="infolet col-sm-2">
 							<div className="title">Payment</div>
 							<div className="content text-danger">Unpaid</div>
 						</div>
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-2 col-xs-6">
 							<div className="title">Pay by</div>
 							<div className="content">2015-12-21</div>
 						</div>
-						<div className="infolet col-sm-2">
+						<div className="infolet col-sm-2 col-xs-6">
 							<div className="title">Amount</div>
 							<div className="content">60,700 THB</div>
 						</div>
@@ -128,11 +128,11 @@ export default class View extends React.Component{
 			case 2:
 				return (
 					<div className="row infolets" onClick={this.switchPayment}>
-						<div className="infolet col-sm-1">
+						<div className="infolet col-sm-2">
 							<div className="title">Payment</div>
 							<div className="content text-success">Exempt</div>
 						</div>
-						<div className="infolet col-sm-11">
+						<div className="infolet col-sm-10">
 							<div className="title">Exemption</div>
 							<div className="content">University's fee, credit fee, faculty's fee</div>
 						</div>
