@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router';
 import DocumentTitle from 'react-document-title';
 
+import Credit from '../credit';
+
 export default class View extends React.Component{
 	state = {
 		info: null,
@@ -52,20 +54,6 @@ export default class View extends React.Component{
 			);
 		}
 
-		let moreCreditInfo = null;
-
-		if(this.state.info.credit.lecture !== undefined){
-			moreCreditInfo = [
-				'(',
-				<abbr key="lecture" title="Lecture">{this.state.info.credit.lecture}</abbr>,
-				' - ',
-				<abbr key="lab" title="Lab">{this.state.info.credit.lab}</abbr>,
-				' - ',
-				<abbr key="self" title="Self study">{this.state.info.credit.self}</abbr>,
-				')',
-			];
-		}
-
 		return (
 			<DocumentTitle title={`${this.state.info.id} ${this.state.info.name.en}`}>
 				<div>
@@ -84,13 +72,13 @@ export default class View extends React.Component{
 					<section className="theme3">
 						<div className="row infolets">
 							<div className="infolet col-sm-2">
-								<div className="title">ID</div>
+								<div className="title">Code</div>
 								<div className="content">{this.state.info.id}</div>
 							</div>
 							<div className="infolet col-sm-3">
 								<div className="title">Credit</div>
 								<div className="content">
-									<abbr title="Total credit">{this.state.info.credit.total}</abbr> <small>{moreCreditInfo}</small>
+									<Credit credit={this.state.info.credit} />
 								</div>
 							</div>
 							<div className="col-sm-7 infolet">

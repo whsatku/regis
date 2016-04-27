@@ -40,3 +40,7 @@ section h4:first-child{
 p{
 	line-height: 1.6em;
 }
+
+abbr{
+	border-bottom: #777 dotted 1px;
+}
