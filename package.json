@@ -29,6 +29,7 @@
     "react-router": "^2.3.0",
     "classnames": "^2.2.4",
     "react-document-title": "^2.0.1",
-    "react-overlays": "^0.6.3"
+    "react-overlays": "^0.6.3",
+    "react-spinkit": "^1.1.7"
   }
 }

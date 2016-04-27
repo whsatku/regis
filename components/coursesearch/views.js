@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import classNames from 'classnames';
+import Spinner from 'react-spinkit';
 
 import style from './style.css'; // eslint-disable-line no-unused-vars
 
@@ -47,11 +48,11 @@ export default class View extends React.Component{
 				onChange={(e) => this.context.router.replace({
 					pathname: this.props.location.pathname,
 					query: {search: e.target.value},
-				})} />
+				})} autoFocus={true} />
 		);
 
 		if(!this.state.ready){
-			search = 'Loading courses';
+			search = <Spinner spinnerName="pulse" />;
 		}
 
 		return (
