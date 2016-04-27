@@ -58,7 +58,7 @@ export default class View extends React.Component{
 		return (
 			<div>
 				<h3>Enroll</h3>
-				{search}
+				<div>{search}</div>
 				{this.renderCourses()}
 			</div>
 		);
@@ -70,7 +70,9 @@ export default class View extends React.Component{
 		}
 
 		if(!this.props.location.query.search){
-			return;
+			return (
+				<p className="text-center noresult">Enter search query</p>
+			);
 		}
 
 		let limit = 10;
@@ -96,6 +98,12 @@ export default class View extends React.Component{
 				</tr>
 			);
 		});
+
+		if(courses.length === 0){
+			return (
+				<p className="text-center noresult">No results</p>
+			);
+		}
 
 		return (
 			<table className="table table-striped table-hover coursetable">
