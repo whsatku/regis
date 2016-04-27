@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import DocumentTitle from 'react-document-title';
+import Spinner from 'react-spinkit';
 
 import Credit from '../credit';
 
@@ -48,7 +49,7 @@ export default class View extends React.Component{
 			return (
 				<DocumentTitle title={this.props.params.splat}>
 					<div>
-						Loading information for {this.props.params.splat}...
+						<Spinner spinnerName="pulse" />
 					</div>
 				</DocumentTitle>
 			);
@@ -127,7 +128,7 @@ export default class View extends React.Component{
 
 	renderEnroll(){
 		if(this.state.section === null){
-			return 'Loading available offerings...';
+			return <Spinner spinnerName="pulse" />;
 		}else if(this.state.section.length === 0){
 			return 'Course is not offered in this semester.';
 		}else{
