@@ -23,6 +23,10 @@ export default class View extends React.Component{
 	}
 
 	render(){
+		if(state.user){
+			this.return();
+		}
+
 		let error = null;
 
 		if(this.state.error){
@@ -84,6 +88,10 @@ export default class View extends React.Component{
 
 		state.user = this.state.username;
 
+		this.return();
+	}
+
+	return(){
 		let returnPath = '/';
 		if(this.state.return){
 			returnPath = this.state.return;
