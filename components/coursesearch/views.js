@@ -68,10 +68,14 @@ export default class View extends React.Component{
 			return;
 		}
 
+		if(!this.props.location.query.search){
+			return;
+		}
+
 		let limit = 10;
 
 		let courses = courseList.filter((item) => {
-			return item.id.includes(this.props.location.query.search || '');
+			return item.id.includes(this.props.location.query.search);
 		}).slice(0, limit).map((item) => {
 			return (
 				<tr key={item.id} className={classNames(
