@@ -1,5 +1,7 @@
 import React from 'react';
 
+import style from './style.css'; // eslint-disable-line no-unused-vars
+
 export default class View extends React.Component{
 	state = {
 		active: 0,
@@ -27,11 +29,11 @@ export default class View extends React.Component{
 		}
 
 		return (
-			<div>
+			<div className="credit">
 				<abbr onMouseEnter={() => this.setState({help: 'Total credit'})} onMouseLeave={() => this.setState({help: null})}>
 					{this.props.credit.total}
 				</abbr> {moreCreditInfo}
-				<div style={{fontSize: '10pt'}} className="help-block">{this.state.help}&nbsp;</div>
+				<div className="creditinfo">{this.state.help}&nbsp;</div>
 			</div>
 		);
 	}

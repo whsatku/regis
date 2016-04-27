@@ -71,7 +71,8 @@ export default class View extends React.Component{
 						<Section course={this.state.info} section={this.state.section} />
 					</section>
 
-					<section className="theme3">
+					<section className="theme2">
+						<h4>Course Information</h4>
 						<div className="row infolets">
 							<div className="infolet col-sm-2">
 								<div className="title">Code</div>
@@ -88,9 +89,7 @@ export default class View extends React.Component{
 								{this.renderPrereq()}
 							</div>
 						</div>
-					</section>
 
-					<section className="theme2">
 						<h4>Course Description</h4>
 						<p>{this.state.info.description.en}</p>
 						<p>{this.state.info.description.th}</p>

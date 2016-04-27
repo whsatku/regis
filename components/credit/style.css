@@ -1,0 +1,9 @@
+.creditinfo{
+	color: #ccc;
+	font-size: 10pt;
+	margin-top: 5px;
+}
+
+.credit abbr{
+	cursor: default;;
+}
