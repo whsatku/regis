@@ -15,6 +15,12 @@ export default class View extends React.Component{
 					</span>
 				</div>
 			);
+		}else{
+			user = (
+				<div className="user">
+					Not logged in
+				</div>
+			);
 		}
 
 		return (

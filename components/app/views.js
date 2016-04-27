@@ -12,6 +12,10 @@ export default class View extends React.Component{
 		if(!state.user && !this.context.router.isActive({pathname: '/login'})){
 			this.context.router.replace({
 				pathname: '/login',
+				state: {
+					error: 'You must be logged in to see this page',
+					return: this.props.location,
+				},
 			});
 		}
 
