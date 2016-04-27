@@ -1,24 +1,25 @@
 import React from 'react';
 import Header from '../header';
-import Login from '../login';
+import state from '../state';
+import style from './style.css'; // eslint-disable-line no-unused-vars
 
 export default class View extends React.Component{
-	state = {
-		user: null,
+	static contextTypes = {
+		router: React.PropTypes.object.isRequired,
 	};
 
 	render(){
+		if(!state.user && !this.context.router.isActive({pathname: '/login'})){
+			this.context.router.replace({
+				pathname: '/login',
+			});
+		}
+
 		return (
 			<div>
 				<Header />
-				{this.getBody()}
+				{this.props.children}
 			</div>
 		);
-	}
-
-	getBody(){
-		if(!this.state.user){
-			return <Login />;
-		}
 	}
 }

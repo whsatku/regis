@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "react-dom": "^15.0.1",
-    "react": "^15.0.1"
+    "react": "^15.0.1",
+    "webpack": "^1.13.0",
+    "react-router": "^2.3.0"
   }
 }

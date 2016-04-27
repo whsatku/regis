@@ -1,0 +1,16 @@
+.branding{
+	font-size: 16pt;
+	font-family: "Open Sans";
+	font-weight: 300;
+}
+.header{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.user{
+	font-size: 12pt;
+}
+.logout{
+	margin-left: 5px;
+	font-size: 10pt;
+}
