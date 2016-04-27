@@ -1,14 +1,15 @@
+/* eslint-env node */
+
 module.exports = {
-	entry: 'components/main.js',
+	entry: __dirname + '/components/main.js',
 	output: {
 		publicPath: 'js',
 		filename: 'bundle.js',
 	},
 	module: {
 		loaders: [
-			{
-				test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader',
-			},
+			{ test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader'] },
+			{ test: /\.css$/, loader: 'style-loader!css-loader' },
 		],
 	},
 };
