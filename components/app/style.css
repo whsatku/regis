@@ -30,3 +30,9 @@ section h4:first-child{
 .padbefore{
 	margin-top: 20px;
 }
+.semibold{
+	font-weight: 600;
+}
+.pointer{
+	cursor: pointer;
+}

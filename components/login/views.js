@@ -39,7 +39,7 @@ export default class View extends React.Component{
 						})}>
 							<label className="control-label">Student ID</label>
 							<input type="text" className="form-control"
-								onChange={(e) => {this.setState({username: e.target.value});}}
+								onChange={(e) => this.setState({username: e.target.value})}
 								value={this.state.username} autoFocus={true}
 								required={true}
 								pattern="[5][0-9]{9}"
@@ -50,7 +50,7 @@ export default class View extends React.Component{
 						})}>
 							<label className="control-label">Password</label>
 							<input type="password" className="form-control"
-								onChange={(e) => {this.setState({hasPassword: e.target.value.length > 0});}} />
+								onChange={(e) => this.setState({hasPassword: e.target.value.length > 0})} />
 							<span className="help-block">For the purpose of demonstration, use any password</span>
 						</div>
 						<input type="submit" value="Login" className="btn btn-primary" />

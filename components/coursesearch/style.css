@@ -1,0 +1,3 @@
+.coursetable tr:first-child td{
+	border-top: none;
+}
