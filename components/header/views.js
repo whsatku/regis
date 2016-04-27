@@ -1,11 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {Modal} from 'react-overlays';
+
 import state from '../state';
 import style from './style.css'; // eslint-disable-line no-unused-vars
 
 export default class View extends React.Component{
 	static contextTypes = {
 		router: React.PropTypes.object.isRequired,
+	};
+
+	state = {
+		showLogout: false,
 	};
 
 	render(){
@@ -16,7 +22,10 @@ export default class View extends React.Component{
 				<div className="user">
 					{state.user}
 					<span className="logout">
-						(<a href="#" onClick={this.logout.bind(this)}>Logout</a>)
+						(<a href="#" onClick={(e) => {
+							e.preventDefault();
+							this.setState({showLogout: true});
+						}}>Logout</a>)
 					</span>
 				</div>
 			);
@@ -36,15 +45,33 @@ export default class View extends React.Component{
 				<div className="col-sm-3 text-right">
 					{user}
 				</div>
+
+				<Modal show={this.state.showLogout} backdropClassName="modal-backdrop in"
+					onHide={() => this.setState({showLogout: false})}>
+					<div className="modal" style={{display: 'block'}}>
+						<div className="modal-dialog">
+							<div className="modal-content">
+								<div className="modal-header">Logout?</div>
+								<div className="modal-footer">
+									<button type="button" className="btn btn-danger"
+										onClick={() => this.logout()}>
+										Logout
+									</button>
+									<button type="button" className="btn btn-default"
+										onClick={() => this.setState({showLogout: false})}>
+										Cancel
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Modal>
 			</div>
 		);
 	}
 
-	logout(e){
-		e.preventDefault();
-		if(!confirm('Do you want to logout?')){
-			return;
-		}
+	logout(){
+		this.setState({showLogout: false});
 		state.user = null;
 		this.context.router.replace('/login');
 	}
