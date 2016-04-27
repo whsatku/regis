@@ -3,7 +3,7 @@ import React from 'react';
 export default class View extends React.Component{
 	render(){
 		return (
-			<div className="container-fluid">
+			<div className="container">
 				<div className="col-md-8">{this.props.children}</div>
 				<div className="col-md-4">
 					<h4>Enrolled</h4>

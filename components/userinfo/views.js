@@ -17,7 +17,7 @@ export default class View extends React.Component{
 				</section>
 
 				<section className="theme1">
-					<h4><Link to="/regis">Registration &raquo;</Link></h4>
+					<h4><Link to="/registration">Registration &raquo;</Link></h4>
 					<div className="row infolets">
 						<div className="infolet col-sm-2">
 							<div className="title">Semester</div>

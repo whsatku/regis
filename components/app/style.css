@@ -36,3 +36,7 @@ section h4:first-child{
 .pointer{
 	cursor: pointer;
 }
+
+p{
+	line-height: 1.6em;
+}
