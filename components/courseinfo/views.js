@@ -50,6 +50,10 @@ export default class View extends React.Component{
 			return (
 				<DocumentTitle title={this.props.params.splat}>
 					<div>
+						<a href="#" onClick={(e) => {
+							e.preventDefault();
+							this.context.router.goBack();
+						}}>&laquo; Back</a>
 						<Spinner spinnerName="pulse" />
 					</div>
 				</DocumentTitle>
