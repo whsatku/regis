@@ -49,7 +49,7 @@ export default class View extends React.Component{
 				<Modal show={this.state.showLogout} backdropClassName="modal-backdrop in"
 					onHide={() => this.setState({showLogout: false})}>
 					<div className="modal" style={{display: 'block'}}>
-						<div className="modal-dialog">
+						<div className="modal-dialog modal-sm">
 							<div className="modal-content">
 								<div className="modal-header">Logout?</div>
 								<div className="modal-footer">
