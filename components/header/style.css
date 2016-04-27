@@ -1,14 +1,24 @@
+.header{
+	margin-top: 20px;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: #b5e655 solid 1px;
+}
+
 .branding{
 	font-size: 16pt;
 	font-family: "Open Sans";
 	font-weight: 300;
+	text-decoration: none;
+	color: black;
 }
-.header{
-	margin-top: 20px;
-	margin-bottom: 30px;
+.branding:hover, .branding:focus{
+	text-decoration: none;
+	color: black;
 }
 .user{
 	font-size: 12pt;
+	line-height: 1.5em;
 }
 .logout{
 	margin-left: 5px;

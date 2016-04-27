@@ -1,3 +1,32 @@
 body{
 	font-family: "Open Sans";
 }
+
+section{
+	margin-bottom: 20px;
+	padding: 10px 0 10px 10px;
+}
+
+/* https://color.adobe.com/Granny-Smith-Apple-color-theme-2313/ */
+
+section.notheme{
+	padding: inherit;
+	background-color: inherit;
+}
+
+section.theme1{
+	border-left: #85db18 solid 10px;
+}
+section.theme2{
+	border-left: #cde855 solid 10px;
+}
+section.theme3{
+	border-left: #a7c520 solid 10px;
+}
+section h4:first-child{
+	margin-top: 0;
+}
+
+.padbefore{
+	margin-top: 20px;
+}

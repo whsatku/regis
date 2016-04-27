@@ -1,8 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router';
 import state from '../state';
 import style from './style.css'; // eslint-disable-line no-unused-vars
 
 export default class View extends React.Component{
+	static contextTypes = {
+		router: React.PropTypes.object.isRequired,
+	};
+
 	render(){
 		let user = null;
 
@@ -26,7 +31,7 @@ export default class View extends React.Component{
 		return (
 			<div className="container header">
 				<div className="col-sm-9">
-					<div className="branding">Course Registration</div>
+					<Link to="/" className="branding">Kasetsart University</Link>
 				</div>
 				<div className="col-sm-3 text-right">
 					{user}
@@ -35,10 +40,12 @@ export default class View extends React.Component{
 		);
 	}
 
-	logout(){
+	logout(e){
+		e.preventDefault();
 		if(!confirm('Do you want to logout?')){
 			return;
 		}
 		state.user = null;
+		this.context.router.replace('/login');
 	}
 }

@@ -1,0 +1,17 @@
+.status{
+	margin-top: 15px;
+	font-size: 11pt;
+}
+.status strong{
+	font-weight: 600;
+}
+
+.infolet{
+	margin-bottom: 10px;
+}
+.infolet .title{
+	font-weight: 300;
+}
+.infolet .content{
+	font-size: 14pt;
+}

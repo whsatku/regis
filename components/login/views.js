@@ -30,18 +30,20 @@ export default class View extends React.Component{
 		}
 
 		return (
-			<div className="container">
+			<div className="container login">
 				<div className="col-sm-6 col-sm-offset-3">
 					<form onSubmit={this.onSubmit.bind(this)}>
 						{error}
 						<div className={classNames(['form-group'], {
 							'has-error': this.state.errorFields.includes('username'),
 						})}>
-							<label className="control-label">Username</label>
+							<label className="control-label">Student ID</label>
 							<input type="text" className="form-control"
 								onChange={(e) => {this.setState({username: e.target.value});}}
 								value={this.state.username} autoFocus={true}
-								required={true} />
+								required={true}
+								pattern="[5][0-9]{9}"
+								placeholder="56xxxxxxxx" />
 						</div>
 						<div className={classNames(['form-group'], {
 							'has-error': this.state.errorFields.includes('password'),
