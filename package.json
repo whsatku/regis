@@ -27,6 +27,7 @@
     "react": "^15.0.1",
     "webpack": "^1.13.0",
     "react-router": "^2.3.0",
-    "classnames": "^2.2.4"
+    "classnames": "^2.2.4",
+    "react-document-title": "^2.0.1"
   }
 }

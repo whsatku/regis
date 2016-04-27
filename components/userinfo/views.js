@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
+import DocumentTitle from 'react-document-title';
+
 import state from '../state';
 import style from './style.css'; // eslint-disable-line no-unused-vars
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import DocumentTitle from 'react-document-title';
 
 export default class View extends React.Component{
 	state = {
@@ -43,9 +44,11 @@ export default class View extends React.Component{
 	render(){
 		if(!this.state.info){
 			return (
-				<div>
-					Loading information for {this.props.params.splat}...
-				</div>
+				<DocumentTitle title={this.props.params.splat}>
+					<div>
+						Loading information for {this.props.params.splat}...
+					</div>
+				</DocumentTitle>
 			);
 		}
 
@@ -64,44 +67,46 @@ export default class View extends React.Component{
 		}
 
 		return (
-			<div>
-				<a href="#" onClick={(e) => {
-					e.preventDefault();
-					this.context.router.goBack();
-				}}>&laquo; Back</a>
-				<h3>{this.state.info.name.en}</h3>
-				<h4>{this.state.info.name.th}</h4>
+			<DocumentTitle title={`${this.state.info.id} ${this.state.info.name.en}`}>
+				<div>
+					<a href="#" onClick={(e) => {
+						e.preventDefault();
+						this.context.router.goBack();
+					}}>&laquo; Back</a>
+					<h3>{this.state.info.name.en}</h3>
+					<h4>{this.state.info.name.th}</h4>
 
-				<section className="theme1">
-					<h4>Sections</h4>
-					{this.renderEnroll()}
-				</section>
+					<section className="theme1">
+						<h4>Sections</h4>
+						{this.renderEnroll()}
+					</section>
 
-				<section className="theme3">
-					<div className="row infolets">
-						<div className="infolet col-sm-2">
-							<div className="title">ID</div>
-							<div className="content">{this.state.info.id}</div>
-						</div>
-						<div className="infolet col-sm-3">
-							<div className="title">Credit</div>
-							<div className="content">
-								<abbr title="Total credit">{this.state.info.credit.total}</abbr> <small>{moreCreditInfo}</small>
+					<section className="theme3">
+						<div className="row infolets">
+							<div className="infolet col-sm-2">
+								<div className="title">ID</div>
+								<div className="content">{this.state.info.id}</div>
+							</div>
+							<div className="infolet col-sm-3">
+								<div className="title">Credit</div>
+								<div className="content">
+									<abbr title="Total credit">{this.state.info.credit.total}</abbr> <small>{moreCreditInfo}</small>
+								</div>
+							</div>
+							<div className="col-sm-7 infolet">
+								<div className="title">Prerequisite</div>
+								{this.renderPrereq()}
 							</div>
 						</div>
-						<div className="col-sm-7 infolet">
-							<div className="title">Prerequisite</div>
-							{this.renderPrereq()}
-						</div>
-					</div>
-				</section>
+					</section>
 
-				<section className="theme2">
-					<h4>Course Description</h4>
-					<p>{this.state.info.description.en}</p>
-					<p>{this.state.info.description.th}</p>
-				</section>
-			</div>
+					<section className="theme2">
+						<h4>Course Description</h4>
+						<p>{this.state.info.description.en}</p>
+						<p>{this.state.info.description.th}</p>
+					</section>
+				</div>
+			</DocumentTitle>
 		);
 	}
 

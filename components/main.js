@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import DocumentTitle from 'react-document-title';
 
 import App from './app';
 import Login from './login';
@@ -10,14 +11,16 @@ import CourseSearch from './coursesearch';
 import CourseInfo from './courseinfo';
 
 ReactDOM.render((
-	<Router history={hashHistory}>
-		<Route path="/" component={App}>
-			<IndexRoute component={UserInfo} />
-			<Route path="login" component={Login} />
-			<Route path="registration" component={Registration}>
-				<IndexRoute component={CourseSearch} />
-				<Route path="*" component={CourseInfo} />
+	<DocumentTitle title="Course Registration">
+		<Router history={hashHistory}>
+			<Route path="/" component={App}>
+				<IndexRoute component={UserInfo} />
+				<Route path="login" component={Login} />
+				<Route path="registration" component={Registration}>
+					<IndexRoute component={CourseSearch} />
+					<Route path="*" component={CourseInfo} />
+				</Route>
 			</Route>
-		</Route>
-	</Router>
+		</Router>
+	</DocumentTitle>
 ), document.getElementById('app'));
