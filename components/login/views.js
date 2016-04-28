@@ -57,7 +57,8 @@ export default class View extends React.Component{
 							})}>
 								<label className="control-label">Password</label>
 								<input type="password" className="form-control"
-									onChange={(e) => this.setState({hasPassword: e.target.value.length > 0})} />
+									onChange={(e) => this.setState({hasPassword: e.target.value.length > 0})}
+									required={true} />
 								<span className="help-block">For the purpose of demonstration, use any password</span>
 							</div>
 							<input type="submit" value="Login" className="btn btn-primary" />

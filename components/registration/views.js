@@ -13,6 +13,7 @@ export default class View extends React.Component{
 	state = {
 		dropSec: null,
 		dropState: STATE_CONFIRM,
+		export: false,
 	};
 
 	componentDidMount(){
@@ -135,9 +136,31 @@ export default class View extends React.Component{
 								{this.renderEnroll()}
 							</tbody>
 						</table>
+						<button type="button" onClick={() => this.setState({export: true})} className="btn btn-default">Export</button>
 					</div>
 					<Modal show={!!this.state.dropSec} backdropClassName="modal-backdrop in">
 						<div className="modal" style={{display: 'block'}}>{confirm}</div>
+					</Modal>
+					<Modal show={this.state.export} backdropClassName="modal-backdrop in"
+						onHide={() => this.setState({export: false})}>
+						<div className="modal" style={{display: 'block'}}>
+							<div className="modal-dialog">
+								<div className="modal-content">
+									<div className="modal-header">
+										<h4>Export to JSON</h4>
+									</div>
+									<div className="modal-body">
+										<textarea className="form-control" style={{height: '200px'}} autoFocus={true} readOnly={true} value={JSON.stringify(state.enrolled)} />
+									</div>
+									<div className="modal-footer">
+										<button type="button" className="btn btn-default"
+											onClick={() => this.setState({export: false})}>
+											Close
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</Modal>
 				</div>
 			</DocumentTitle>
