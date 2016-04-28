@@ -2,6 +2,7 @@ import React from 'react';
 import Spinner from 'react-spinkit';
 import {Modal} from 'react-overlays';
 
+import state from '../state';
 import style from './style.css'; // eslint-disable-line no-unused-vars
 
 const STATE_CONFIRM = 0;
@@ -12,6 +13,19 @@ export default class View extends React.Component{
 	state = {
 		enroll: null,
 		enrollState: STATE_CONFIRM,
+		enrollType: 'C',
+	};
+
+	componentDidMount(){
+		state.on('enrolled', this.onUpdate);
+	}
+
+	componentWillUnmount(){
+		state.removeListener('enrolled', this.onUpdate);
+	}
+
+	onUpdate = () => {
+		this.forceUpdate();
 	};
 
 	render(){
@@ -22,6 +36,15 @@ export default class View extends React.Component{
 		}else{
 			let sections = this.props.section.map((section) => {
 				let enrollBtn = <button type="button" className="btn btn-sm btn-primary" onClick={() => this.setState({enroll: section})}>Enroll</button>;
+
+				if(state.enrolledInSubject(this.props.course.id, section.type)){
+					enrollBtn = null;
+				}
+
+				if(state.enrolledInSection(this.props.course.id, section.id, section.type)){
+					enrollBtn = <span className="text-success">Enrolled</span>;
+				}
+
 				return (
 					<tr key={`${section.id} ${section.type}`}>
 						<td>
@@ -57,6 +80,13 @@ export default class View extends React.Component{
 										<dd>{this.state.enroll.type}</dd>
 										<dt>Section</dt>
 										<dd>{this.state.enroll.id}</dd>
+										<dt>Credit / Audit</dt>
+										<dd>
+											<select value={this.state.enrollType} className="form-control" onChange={(e) => this.setState({enrollType: e.target.value})}>
+												<option value="C">Credit</option>
+												<option value="A">Audit</option>
+											</select>
+										</dd>
 									</dl>
 								</div>
 								<div className="modal-footer">
@@ -94,6 +124,8 @@ export default class View extends React.Component{
 										<dd>{this.state.enroll.type}</dd>
 										<dt>Section</dt>
 										<dd>{this.state.enroll.id}</dd>
+										<dt>Credit / Audit</dt>
+										<dd>{this.state.enrollType}</dd>
 									</dl>
 								</div>
 								<div className="modal-footer">
@@ -148,6 +180,16 @@ export default class View extends React.Component{
 		this.setState({
 			enrollState: STATE_LOADING,
 		});
+
+		state.enrolled = state.enrolled.push({
+			id: this.props.course.id,
+			name: this.props.course.name.en,
+			section: this.state.enroll.id,
+			sectionType: this.state.enroll.type,
+			enrollType: this.state.enrollType,
+			credit: this.props.course.credit.total,
+		});
+
 		setTimeout(() => {
 			this.setState({
 				enrollState: STATE_DONE,
