@@ -3,6 +3,8 @@ import {Link} from 'react-router';
 import classNames from 'classnames';
 import Spinner from 'react-spinkit';
 
+import state from '../state';
+
 import style from './style.css'; // eslint-disable-line no-unused-vars
 
 // don't hmr this!
@@ -84,7 +86,7 @@ export default class View extends React.Component{
 				<tr key={item.id} className={classNames(
 					'pointer',
 					{
-						'success': item.id === '01219112',
+						'success': state.enrolledInSubject(item.id),
 					}
 				)} onClick={() => {
 					this.context.router.push(`/registration/${item.id}`);

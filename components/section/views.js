@@ -37,7 +37,7 @@ export default class View extends React.Component{
 			let sections = this.props.section.map((section) => {
 				let enrollBtn = <button type="button" className="btn btn-sm btn-primary" onClick={() => this.setState({enroll: section})}>Enroll</button>;
 
-				if(state.enrolledInSubject(this.props.course.id, section.type)){
+				if(state.enrolledInSubjectType(this.props.course.id, section.type)){
 					enrollBtn = null;
 				}
 

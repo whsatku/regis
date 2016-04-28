@@ -40,7 +40,16 @@ class State extends EventEmitter{
 		this.emit('enrolled', val);
 	}
 
-	enrolledInSubject(id, secType){
+	enrolledInSubject(id){
+		for(let item of this.enrolled){
+			if(item.id === id){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	enrolledInSubjectType(id, secType){
 		for(let item of this.enrolled){
 			if(item.id === id && item.sectionType === secType){
 				return true;
