@@ -183,7 +183,7 @@ export default class View extends React.Component{
 					<td>{item.section} <small>({item.sectionType})</small></td>
 					<td><abbr title={explaination[item.enrollType]}>{item.enrollType}</abbr></td>
 					<td>{item.credit}</td>
-					<td><button className="btn btn-sm btn-danger" onClick={() => this.setState({dropState: STATE_CONFIRM, dropSec: item})}>Drop</button></td>
+					<td><button className="btn btn-sm btn-link" onClick={() => this.setState({dropState: STATE_CONFIRM, dropSec: item})}>Drop</button></td>
 				</tr>
 			);
 		});
