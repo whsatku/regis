@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 import Spinner from 'react-spinkit';
+import fuzzy from 'fuzzy';
 
 import state from '../state';
 
@@ -46,7 +47,7 @@ export default class View extends React.Component{
 		let search = (
 			<input type="text" className="form-control"
 				value={this.props.location.query.search || ''}
-				placeholder="Search by course ID"
+				placeholder="Search by course ID or name"
 				onChange={(e) => this.context.router.replace({
 					pathname: this.props.location.pathname,
 					query: {search: e.target.value},
@@ -79,9 +80,8 @@ export default class View extends React.Component{
 
 		let limit = 10;
 
-		let courses = courseList.filter((item) => {
-			return item.id.includes(this.props.location.query.search);
-		}).slice(0, limit).map((item) => {
+		let filtered = this.getFilteredCourse();
+		let courses = filtered.slice(0, limit).map((item) => {
 			return (
 				<tr key={item.id} className={classNames(
 					'pointer',
@@ -100,6 +100,11 @@ export default class View extends React.Component{
 				</tr>
 			);
 		});
+		let hasMore = <p className="text-center noresult">Refine your query for additional results</p>;
+
+		if(courses.length < limit){
+			hasMore = null;
+		}
 
 		if(courses.length === 0){
 			return (
@@ -108,12 +113,54 @@ export default class View extends React.Component{
 		}
 
 		return (
-			<table className="table table-striped table-hover coursetable">
-				<tbody>
-					{courses}
-				</tbody>
-			</table>
+			<div>
+				<table className="table table-striped table-hover coursetable">
+					<tbody>
+						{courses}
+					</tbody>
+				</table>
+				{hasMore}
+			</div>
 		);
+	}
+
+	getFilteredCourse(){
+		let query = this.props.location.query.search;
+
+		let scores = courseList.map((item, id) => {
+			let score = 0;
+
+			if(item.id.includes(query)){
+				score += 30;
+			}
+			if(item.id.startsWith(query)){
+				score += 25;
+			}
+			if(item.id.substring(5).startsWith(query)){
+				score += 20;
+			}
+
+			let enMatch = fuzzy.match(query, item.name.en);
+			if(enMatch){
+				console.log(enMatch.score, item.name.en);
+				score += enMatch.score;
+			}
+			let thMatch = fuzzy.match(query, item.name.th);
+			if(thMatch){
+				score += thMatch.score;
+			}
+
+			return {
+				id: id,
+				score: score,
+			};
+		}).filter(item => item.score > 0);
+
+		scores.sort((a, b) => b.score - a.score);
+
+		return scores.map((item) => {
+			return courseList[item.id];
+		});
 	}
 
 }
