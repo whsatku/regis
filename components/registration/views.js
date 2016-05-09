@@ -2,6 +2,7 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import {Modal} from 'react-overlays';
 import Spinner from 'react-spinkit';
+import {Link} from 'react-router';
 
 import state from '../state';
 
@@ -177,8 +178,10 @@ export default class View extends React.Component{
 			return (
 				<tr key={`${item.id} ${item.section} ${item.sectionType}`}>
 					<td>
-						{item.id}
-						<div><small>{item.name}</small></div>
+						<Link to={`/registration/${item.id}`}>
+							{item.id}<br />
+							<small>{item.name}</small>
+						</Link>
 					</td>
 					<td>{item.section} <small>({item.sectionType})</small></td>
 					<td><abbr title={explaination[item.enrollType]}>{item.enrollType}</abbr></td>
