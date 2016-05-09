@@ -11,10 +11,6 @@ import style from './style.css'; // eslint-disable-line no-unused-vars
 // don't hmr this!
 let courseList = null;
 
-if(!window.fetch){
-	alert('Browser is not supported!');
-}
-
 export default class View extends React.Component{
 	state = {
 		ready: false,
