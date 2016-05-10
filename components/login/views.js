@@ -38,7 +38,12 @@ export default class View extends React.Component{
 		return (
 			<DocumentTitle title="Login">
 				<div className="container login">
-					<div className="col-sm-6 col-sm-offset-3">
+					<div className="col-sm-4 branding text-center">
+						<img src="ku.png" className="img-responsive" />
+						<h3>Kasetsart University</h3>
+						<h5>Course Registration</h5>
+					</div>
+					<div className="col-sm-8">
 						<form onSubmit={this.onSubmit.bind(this)}>
 							{error}
 							<div className={classNames(['form-group'], {

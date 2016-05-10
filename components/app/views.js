@@ -19,15 +19,14 @@ export default class View extends React.Component{
 				},
 			});
 		}
-		let menu = <Menu />;
 		if(!state.user){
-			menu = null;
+			return <div>{this.props.children}</div>;
 		}
 
 		return (
 			<div>
 				<Header />
-				{menu}
+				<Menu />
 				{this.props.children}
 			</div>
 		);
